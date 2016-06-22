@@ -1,7 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Contacts</h1>
+<!--- 
+Things we need when browser calls app:
 
+1) First check if user is already logged in, if not route to registration page (sign_up_path)
+2) If logged in, take to a page with contacts listed and a sign out button. Also, a button to add contacts.
+3) After that, 
+-->
 <table>
   <thead>
     <tr>
@@ -29,5 +35,9 @@
 </table>
 
 <br>
+<% if user_signed_in? %>
+<li> <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> </li> 
+<% end %>
 
+<%= link_to 'Sign Out', destroy_user_session_path %>
 <%= link_to 'New Contact', new_contact_path %>
