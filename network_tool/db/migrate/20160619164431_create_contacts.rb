@@ -8,5 +8,8 @@ class CreateContacts < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :microposts, [:user_id, :created_at]
+    #adding created at to retrieve contacts associated
+    #with given user id in reverse order of creation
   end
 end
