@@ -5,6 +5,8 @@ class ContactsController < ApplicationController
   # GET /contacts.json
   def index
     @contacts = Contact.all
+    #need a way to pull only this profile's contacts not every one in the data base.  instagram vid should be similar bc 
+    #it will pull only the user's photos. Rails tutorial should have this.
   end
 
   # GET /contacts/1
