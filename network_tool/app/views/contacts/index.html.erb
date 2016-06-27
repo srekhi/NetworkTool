@@ -27,8 +27,10 @@ Things we need when browser calls app:
         <td><%= contact.email %></td>
         <td><%= contact.information %></td>
         <td><%= link_to 'Show', contact %></td>
-        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if contact.user == current_user %>
+          <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+          <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

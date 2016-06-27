@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index, :show]
 
   # GET /contacts
   # GET /contacts.json
@@ -11,12 +12,28 @@ class ContactsController < ApplicationController
 
   # GET /contacts/1
   # GET /contacts/1.json
+
+  def new
+    @contact = current_user.contacts.build #if there is no current_user signed in, this throws an error. that makes sense because this should be nil.
+
+  end
+
   def show
   end
 
   # GET /contacts/new
-  def new
-    @contact = Contact.new
+   def create
+    @contact = current_user.contacts.build(contact_params)
+
+    respond_to do |format|
+      if @contact.save
+        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+        format.json { render :show, status: :created, location: @contact }
+      else
+        format.html { render :new }
+        format.json { render json: @contact.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /contacts/1/edit
@@ -26,7 +43,7 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    @contact = Contact.new(contact_params)
+    @contact = current_user.contacts.build(contact_params)
 
     respond_to do |format|
       if @contact.save
