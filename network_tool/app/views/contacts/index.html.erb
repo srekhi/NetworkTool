@@ -21,6 +21,7 @@ Things we need when browser calls app:
 
   <tbody>
     <% @contacts.each do |contact| %>
+      <div class="link row clearfix">
       <tr>
         <td><%= contact.name %></td>
         <td><%= contact.user_id %></td>
@@ -33,6 +34,7 @@ Things we need when browser calls app:
         <% end %>
       </tr>
     <% end %>
+    </div>
   </tbody>
 </table>
 
