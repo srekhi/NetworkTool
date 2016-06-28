@@ -5,7 +5,11 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    if user_signed_in? 
+      @contacts = current_user.contacts
+    end
+   # @contacts = Contact.all
+
     #need a way to pull only this profile's contacts not every one in the data base.  instagram vid should be similar bc 
     #it will pull only the user's photos. Rails tutorial should have this.
   end
@@ -15,7 +19,6 @@ class ContactsController < ApplicationController
 
   def new
     @contact = current_user.contacts.build #if there is no current_user signed in, this throws an error. that makes sense because this should be nil.
-
   end
 
   def show
@@ -90,4 +93,7 @@ class ContactsController < ApplicationController
     def contact_params
       params.require(:contact).permit(:name, :user_id, :email, :information)
     end
+
+   
+
 end

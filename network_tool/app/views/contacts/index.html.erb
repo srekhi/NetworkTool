@@ -2,32 +2,36 @@
 
 <h1>Listing Contacts</h1>
 <!--- 
-Things we need when browser calls app:
-
-1) First check if user is already logged in, if not route to registration page (sign_up_path)
-2) If logged in, take to a page with contacts listed and a sign out button. Also, a button to add contacts.
-3) After that, 
+Trying to make it so that these contacts only show up if they are your contacts
 -->
-<% @contacts.each do |contact| %>
-  <div class="link row clearfix">
-    <h2>
-      <%= link_to contact.name, contact %><br>
-      <small class="author">Submitted <%= time_ago_in_words(contact.created_at) %></small>
-    </h2>
 
-    <div class="btn-group">
-      <%= link_to contact_path(contact), method: :put, class: "btn btn-default btn-sm" do %>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+
 
 <br>
 <% if user_signed_in? %>
-  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> 
+  <% @contacts = current_user.contacts %>
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> 
+    <% @contacts.each do |contact| %>
+      <div class="link row clearfix">
+        <h2>
+          <%= link_to contact.name, contact %>
+          <br>
+          <small class="author">Submitted <%= time_ago_in_words(contact.created_at) %></small>
+        </h2>
+      </div>
+
+        <div class="btn-group">
+          <%= link_to contact_path(contact), method: :put, class: "btn btn-default btn-sm" do %>
+        </div>
+
+      </div>
+    <% end %>
+  <% end %>
+
 <% else %>
   <%= link_to "Sign up", new_user_registration_path %> 
+
 <% end %>
 
 
-<%= link_to 'New Contact', new_contact_path %>
+<%= link_to "New Contact", new_contact_path %>
