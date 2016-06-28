@@ -8,35 +8,19 @@ Things we need when browser calls app:
 2) If logged in, take to a page with contacts listed and a sign out button. Also, a button to add contacts.
 3) After that, 
 -->
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>User</th>
-      <th>Email</th>
-      <th>Information</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @contacts.each do |contact| %>
+  <div class="link row clearfix">
+    <h2>
+      <%= link_to contact.name, contact %><br>
+      <small class="author">Submitted <%= time_ago_in_words(contact.created_at) %></small>
+    </h2>
 
-  <tbody>
-    <% @contacts.each do |contact| %>
-      <div class="link row clearfix">
-      <tr>
-        <td><%= contact.name %></td>
-        <td><%= contact.user_id %></td>
-        <td><%= contact.email %></td>
-        <td><%= contact.information %></td>
-        <td><%= link_to 'Show', contact %></td>
-        <% if contact.user == current_user %>
-          <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-          <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
+    <div class="btn-group">
+      <%= link_to contact_path(contact), method: :put, class: "btn btn-default btn-sm" do %>
+      <% end %>
     </div>
-  </tbody>
-</table>
+  </div>
+<% end %>
 
 <br>
 <% if user_signed_in? %>
