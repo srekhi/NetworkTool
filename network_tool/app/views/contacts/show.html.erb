@@ -18,7 +18,9 @@
 </p>
 
 <div>
-	<button> Want an email/text reminder about contacting <%= @contact.name %>? </button>
+	<button> Want an email/text reminder about contacting <%= @contact.name %>? </button> <!-- needs to be a put method to reminders_path -->
+	<%= button_to "Want", reminders_path, :class => "button", :method => :put  %>
+	
 </div>
 <br>
 <%= link_to 'Edit', edit_contact_path(@contact) %> |
