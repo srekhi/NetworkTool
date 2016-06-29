@@ -17,5 +17,9 @@
   <%= @contact.information %>
 </p>
 
+<div>
+	<button> Want an email/text reminder about contacting <%= @contact.name %>? </button>
+</div>
+<br>
 <%= link_to 'Edit', edit_contact_path(@contact) %> |
 <%= link_to 'Back', contacts_path %>
