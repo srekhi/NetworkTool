@@ -1,6 +1,7 @@
 class RemindersController < ApplicationController
   before_action :set_reminder, only: [:show, :edit, :update, :destroy]
 
+
   # GET /reminders
   # GET /reminders.json
   def index
