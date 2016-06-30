@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  time_from_now: MyString
+  send_to: MyString
+
+two:
+  title: MyString
+  time_from_now: MyString
+  send_to: MyString

@@ -1,5 +1,13 @@
-<h1>ReminderMailer#network_reminder</h1>
-
-<p>
-  <%= @greeting %>, find me in app/views/reminder_mailer/network_reminder.html.erb
-</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello, <%= @user.name %></h1>
+    <p>
+      You have scheduled a reminder to reach out to <%= @contact.name %> .<br>
+    </p>
+    <p>Thanks for using us and have a great day!</p>
+  </body>
+</html>
