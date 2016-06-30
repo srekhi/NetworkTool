@@ -1,11 +1,15 @@
 class RemindersController < ApplicationController
   before_action :set_reminder, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index, :show]
+
 
 
   # GET /reminders
   # GET /reminders.json
   def index
-    @reminders = Reminder.all
+    if user_signed_in? 
+      @contacts = current_user.contacts
+    end
   end
 
   # GET /reminders/1
@@ -15,7 +19,7 @@ class RemindersController < ApplicationController
 
   # GET /reminders/new
   def new
-    @reminder = Reminder.new
+    @reminder = current_user.reminders.build
   end
 
   # GET /reminders/1/edit
