@@ -25,7 +25,7 @@ class RemindersController < ApplicationController
   # POST /reminders
   # POST /reminders.json
   def create
-    @reminder = Reminder.new(reminder_params)
+    @reminder = current_user.reminders.build(reminder_params)
 
     respond_to do |format|
       if @reminder.save
@@ -70,6 +70,6 @@ class RemindersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reminder_params
-      params[:reminder]
+       params.require(:contact).permit(:title, :time_from_now, :send_to)
     end
 end
