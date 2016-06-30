@@ -11,6 +11,18 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title%>
+  </div>
+  <div class="field">
+    <%= f.label :time_from_now %><br>
+    <%= f.text_field :time_from_now %>
+  </div>
+  <div class="field">
+    <%= f.label :send_to %><br>
+    <%= f.text_area :send_to %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

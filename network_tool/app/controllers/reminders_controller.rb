@@ -8,7 +8,7 @@ class RemindersController < ApplicationController
   # GET /reminders.json
   def index
     if user_signed_in? 
-      @contacts = current_user.contacts
+      @reminders = current_user.reminders
     end
   end
 
@@ -74,6 +74,6 @@ class RemindersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reminder_params
-       params.require(:contact).permit(:title, :time_from_now, :send_to)
+       params.require(:reminder).permit(:title, :time_from_now, :send_to)
     end
 end
