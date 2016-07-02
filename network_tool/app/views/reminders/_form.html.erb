@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title%>
+    <%= f.label :what_is_the_occasion? %><br> <!--dropdown menu to select birthday, job anniversary, holiday, just reaching out, wedding anniversary, etc. -->
+    <%= f.select(:occasion, options_for_select([['Birthday', 'Birthday'], ['Holiday', 'Holiday'], ['Job Anniversary', 'Job Anniversary'], ['Wedding Anniversary', 'Wedding Anniversary'], ['Just Reaching Out', 'Just Reaching Out']]))  %>
   </div>
   <div class="field">
-    <%= f.label :time_from_now %><br>
-    <%= f.text_field :time_from_now %>
+    <%= f.label :how_long_from_now? %><br>
+    <%= f.text_field :time_from_now %> <!-- one field to enter a number, another dropdown menu to pick weeks/months/year-->
   </div>
   <div class="field">
-    <%= f.label :send_to %><br>
-    <%= f.text_area :send_to %>
+    <%= f.label :text_or_email? %><br>
+    <%= f.text_area :send_to %> <!-- drop down menu to select a text reminder or email reminder -->
   </div>
   <div class="actions">
     <%= f.submit %>
