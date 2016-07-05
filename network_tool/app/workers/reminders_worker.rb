@@ -2,6 +2,7 @@ class RemindersWorker
   include Sidekiq::Worker
 
   def perform(name, count)
+  	Reminder.mail
     # do something
     #This is where job done that needs to be done in background
    
