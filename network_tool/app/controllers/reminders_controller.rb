@@ -1,6 +1,6 @@
 class RemindersController < ApplicationController
   before_action :set_reminder, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!
 
 
 
@@ -8,7 +8,7 @@ class RemindersController < ApplicationController
   # GET /reminders.json
   def index
     if user_signed_in? 
-      @reminders = current_user.reminders
+      @reminders = @contact.reminders.
     end
   end
 
@@ -29,8 +29,9 @@ class RemindersController < ApplicationController
   # POST /reminders
   # POST /reminders.json
   def create
-    @reminder = current_user.reminders.build(reminder_params)
-
+    @reminder = @contact.reminders.create(reminder_params)
+    diff = (@reminder.date - DateTime.current).abs #when you subtract two date times, you get the diff in days.
+    TextReminderJob.set(wait: diff.days).perform_later(@reminder, current_user.number)
     respond_to do |format|
       if @reminder.save
         format.html { redirect_to @reminder, notice: 'Reminder was successfully created.' }
@@ -74,6 +75,6 @@ class RemindersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reminder_params
-       params.require(:reminder).permit(:title, :time_from_now, :send_to, :occasion)
+       params.require(:reminder).permit(:title, :time_from_now, :send_to, :occasion, :contact_id)
     end
 end

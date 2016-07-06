@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160702190249) do
+ActiveRecord::Schema.define(version: 20160706130627) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
@@ -37,12 +37,12 @@ ActiveRecord::Schema.define(version: 20160702190249) do
     t.string   "send_to"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "user_id"
     t.string   "occasion"
     t.datetime "date"
+    t.integer  "contact_id"
   end
 
-  add_index "reminders", ["user_id"], name: "index_reminders_on_user_id"
+  add_index "reminders", ["contact_id"], name: "index_reminders_on_contact_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20160702190249) do
     t.integer  "failed_attempts",                  default: 0
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.integer  "number"
   end
 
 end
