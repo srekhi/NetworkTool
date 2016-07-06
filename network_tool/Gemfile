@@ -13,6 +13,7 @@ gem 'sidekiq_mailer'
 gem 'twilio-ruby', '~> 3.12'
 gem 'devise'
 gem 'jbuilder',     '2.2.3'
+gem 'envyable'
 gem 'sdoc',         '0.4.0', group: :doc
 
 group :development, :test do
