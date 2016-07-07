@@ -26,7 +26,8 @@ class ContactsController < ApplicationController
 
   # GET /contacts/new
    def create
-    @contact = current_user.contacts.build(contact_params)
+    @contact = current_user.contacts.build(contact_params) #       params.require(:contact).permit(:name, :user_id, :email, :information)
+
 
     respond_to do |format|
       if @contact.save

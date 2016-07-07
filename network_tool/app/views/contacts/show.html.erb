@@ -19,15 +19,18 @@
 
 <p>
  <strong>Scheduled Reminders:</strong>
-
- 
-
+ <br>
+ <% @contact.reminders.each do |r| %>
+  <!-- <%= link_to contact_reminder_path(@contact, r), r.occasion %> -->
+  <%= link_to r.occasion, contact_reminder_path(@contact, r) %>
+  <!-- contact_reminder GET    /contacts/:contact_id/reminders/:id(.:format)      reminders#show -->
+ <% end %>
 </p>
 
 
 <div>
 	<button> Want an email/text reminder about contacting <%= @contact.name %>? </button> <!-- needs to be a put method to reminders_path -->
-	<%= button_to "Want", new_contact_reminder_path(@contact.id), :class => "button", :method => :get %>
+	<%= button_to "Want", new_contact_reminder_path(@contact), :class => "button", :method => :get %>
 	
 </div>
 <br>
