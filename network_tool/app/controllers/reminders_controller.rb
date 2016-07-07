@@ -1,5 +1,6 @@
 class RemindersController < ApplicationController
   before_action :set_reminder, only: [:show, :edit, :update, :destroy]
+  before_action :set_contact
   before_filter :authenticate_user!
 
 
@@ -8,13 +9,14 @@ class RemindersController < ApplicationController
   # GET /reminders.json
   def index
     if user_signed_in? 
-      @reminders = @contact.reminders.
+      @reminders = @contact.reminders
     end
   end
 
   # GET /reminders/1
   # GET /reminders/1.json
   def show
+    @reminders
   end
 
   # GET /reminders/new
@@ -29,7 +31,10 @@ class RemindersController < ApplicationController
   # POST /reminders
   # POST /reminders.json
   def create
-    @reminder = @contact.reminders.create(reminder_params)
+    @contact = Contact.find(params[:contact_id])
+    @reminder = @contact.reminder.create(reminder_params)
+
+   # @reminder = @contact.reminders.create(reminder_params)
     diff = (@reminder.date - DateTime.current).abs #when you subtract two date times, you get the diff in days.
     TextReminderJob.set(wait: diff.days).perform_later(@reminder, current_user.number)
     respond_to do |format|
@@ -41,6 +46,7 @@ class RemindersController < ApplicationController
         format.json { render json: @reminder.errors, status: :unprocessable_entity }
       end
     end
+    redirect_to @contact
   end
 
   # PATCH/PUT /reminders/1
@@ -69,10 +75,13 @@ class RemindersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_reminder
-      @reminder = Reminder.find(params[:id])
+    def set_contact #to do list
+      @contact = Contact.find(params[:contact_id])
     end
 
+    def set_reminder #to do item
+      @reminder = @contact.reminders.find(params[:id])
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def reminder_params
        params.require(:reminder).permit(:title, :time_from_now, :send_to, :occasion, :contact_id)
