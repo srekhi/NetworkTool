@@ -39,14 +39,14 @@ class RemindersController < ApplicationController
     TextReminderJob.set(wait: diff.days).perform_later(@reminder, current_user.number)
     respond_to do |format|
       if @reminder.save
-        format.html { redirect_to @reminder, notice: 'Reminder was successfully created.' }
+        format.html { redirect_to @contact, notice: 'Reminder was successfully created.' }
         format.json { render :show, status: :created, location: @reminder }
       else
         format.html { render :new }
         format.json { render json: @reminder.errors, status: :unprocessable_entity }
+        redirect_to @contact
       end
     end
-    redirect_to @contact
   end
 
   # PATCH/PUT /reminders/1
