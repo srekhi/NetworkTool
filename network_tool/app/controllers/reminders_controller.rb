@@ -32,8 +32,7 @@ class RemindersController < ApplicationController
   # POST /reminders
   # POST /reminders.json
   def create
-    @contact = Contact.find(params[:contact_id])
-    @reminder = @contact.reminder.create(reminder_params)
+    @reminder = @contact.reminders.create(reminder_params)
 
    # @reminder = @contact.reminders.create(reminder_params)
     diff = (@reminder.date - DateTime.current).abs #when you subtract two date times, you get the diff in days.
@@ -85,6 +84,6 @@ class RemindersController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def reminder_params
-       params.require(:reminder).permit(:title, :time_from_now, :send_to, :occasion, :contact_id)
+       params.require(:reminder).permit(:title, :time_from_now, :send_to, :occasion, :contact_id, :date)
     end
 end

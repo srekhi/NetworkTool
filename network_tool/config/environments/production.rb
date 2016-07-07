@@ -1,4 +1,4 @@
-Rails.application.configure do
+  Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -77,4 +77,38 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_dispatch.rack_cache = {
+  metastore: "redis://localhost:6379/1/metastore",
+  entitystore: "redis://localhost:6379/1/entitystore"
+  }
+  sentinel_config = {
+  url: "redis://mymaster/0",
+  role: "master",
+  sentinels: [{
+    host: "127.0.0.1",
+    port: 26379
+  },{
+    host: "127.0.0.1",
+    port: 26380
+  },{
+    host: "127.0.0.1",
+    port: 26381
+  }]
+}
+
+# configure cache, merging opts with sentinel conf
+config.cache_store = :redis_store, sentinel_config.merge(
+  namespace: "cache",
+  expires_in: 1.days
+)
+
+# configure sessions, setting the sentinel config as the
+# servers value, merging opts with the sentinel conf.
+config.session_store :redis_store, {
+  servers: sentinel_config.merge(
+    namespace: "sessions"
+  ),
+  expires_in: 2.days
+}
 end

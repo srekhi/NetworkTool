@@ -10,9 +10,11 @@ gem 'bootstrap-will_paginate'
 gem 'turbolinks',   '2.3.0'
 gem 'sidekiq'
 gem 'sidekiq_mailer'
+gem 'redis-rails'
 gem 'twilio-ruby', '~> 3.12'
 gem 'devise'
 gem 'jbuilder',     '2.2.3'
+gem 'redis-rack-cache'
 gem 'envyable'
 gem 'sdoc',         '0.4.0', group: :doc
 
