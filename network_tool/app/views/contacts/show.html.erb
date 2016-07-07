@@ -19,7 +19,7 @@
 
 <div>
 	<button> Want an email/text reminder about contacting <%= @contact.name %>? </button> <!-- needs to be a put method to reminders_path -->
-	<%= button_to "Want", new_contact_reminder_path(:contact_id), :class => "button", :method => :get %>
+	<%= button_to "Want", new_contact_reminder_path(@contact.id), :class => "button", :method => :get %>
 	
 </div>
 <br>

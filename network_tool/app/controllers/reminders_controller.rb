@@ -21,7 +21,8 @@ class RemindersController < ApplicationController
 
   # GET /reminders/new
   def new
-    @reminder = current_user.reminders.build
+    @contact = Contact.find(params[:contact_id])
+    @reminder = @contact.reminders.build
   end
 
   # GET /reminders/1/edit
