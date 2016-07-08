@@ -1,6 +1,6 @@
 class RemindersController < ApplicationController
-  before_action :set_reminder, only: [:show, :edit, :update, :destroy]
   before_action :set_contact
+  before_action :set_reminder, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
 
