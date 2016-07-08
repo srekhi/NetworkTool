@@ -16,7 +16,6 @@ class RemindersController < ApplicationController
   # GET /reminders/1
   # GET /reminders/1.json
   def show
-    @reminders
   end
 
   # GET /reminders/new
@@ -54,8 +53,8 @@ class RemindersController < ApplicationController
   def update
     respond_to do |format|
       if @reminder.update(reminder_params)
-        format.html { redirect_to @reminder, notice: 'Reminder was successfully updated.' }
-        format.json { render :show, status: :ok, location: @reminder }
+        format.html { redirect_to contact_reminder_path(@contact, @reminder), notice: 'Reminder was successfully updated.' }
+        format.json { render :show, status: :ok, location: contact_reminder_path(@contact, @reminder) }
       else
         format.html { render :edit }
         format.json { render json: @reminder.errors, status: :unprocessable_entity }
@@ -68,7 +67,7 @@ class RemindersController < ApplicationController
   def destroy
     @reminder.destroy
     respond_to do |format|
-      format.html { redirect_to reminders_url, notice: 'Reminder was successfully destroyed.' }
+      format.html { redirect_to contact_reminders_url(@contact, @reminder), notice: 'Reminder was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

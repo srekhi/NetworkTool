@@ -9,18 +9,15 @@
     </tr>
   </thead>
 
-  <tbody>
+
     <% @reminders.each do |reminder| %>
-      <tr>
-        <td><%= reminder.title %><td>
-        <td><%= link_to 'Show', reminder %></td>
-        <td><%= link_to 'Edit', edit_reminder_path(reminder) %></td>
-        <td><%= link_to 'Destroy', reminder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <%= reminder.occasion %><br>
+        <%= link_to 'Show', contact_reminder_path(@contact, reminder) %>
+        <%= link_to 'Edit', edit_contact_reminder_path(@contact, reminder) %>
+        <%= link_to 'Destroy', contact_reminder_path(@contact, reminder), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
-  </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Reminder', new_reminder_path %>
+<%= link_to 'New Reminder', new_contact_reminder_path(@contact, @reminder) %>

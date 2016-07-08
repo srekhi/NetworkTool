@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_reminder_path(@reminder) %> |
-<%= link_to 'Back', reminders_path %>
+Occasion for the reminder: <%=@reminder.occasion %> <br>
+'Going to send you a text on: <%= @reminder.date %> <br>
+<%= link_to 'Edit', edit_contact_reminder_path(@contact, @reminder) %> 
+<%= link_to 'Back', contact_path(@contact)%>

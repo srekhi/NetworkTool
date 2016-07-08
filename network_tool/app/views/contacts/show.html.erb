@@ -1,5 +1,6 @@
 <div class="page-header">
-  <h1><a href="<%= @contact.name %>"><%= @contact.name %></a><br> </h1>
+  <!--<h1><a href="<%= @contact.name %>"> -->
+  <h1><%= @contact.name %></a><br> </h1>
 </div>
 
 <p>
@@ -22,7 +23,7 @@
  <br>
  <% @contact.reminders.each do |r| %>
   <!-- <%= link_to contact_reminder_path(@contact, r), r.occasion %> -->
-  <%= link_to r.occasion, contact_reminder_path(@contact, r) %>
+  <%= link_to r.occasion, contact_reminder_path(@contact, r) %> <br>
   <!-- contact_reminder GET    /contacts/:contact_id/reminders/:id(.:format)      reminders#show -->
  <% end %>
 </p>
