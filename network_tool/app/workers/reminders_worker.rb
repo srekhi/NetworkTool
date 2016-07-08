@@ -1,5 +1,4 @@
 class RemindersWorker
-  include Sidekiq::Worker
 
   def perform(name, count)
   	Reminder.mail
