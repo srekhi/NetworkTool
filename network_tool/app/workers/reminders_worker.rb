@@ -1,4 +1,8 @@
+require 'sidekiq'
+
 class RemindersWorker
+	include Sidekiq::Worker
+
 
  def perform(reminder, number)
   	client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
