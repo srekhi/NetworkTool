@@ -4,9 +4,10 @@ class RemindersWorker
 	include Sidekiq::Worker
 
 
- def perform(reminder, number)
+ def perform(reminder_id, number)
+ 	reminder = Reminders.find(reminder_id)
   	client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
-  	message = client.messages.create from: '8326482121', to: 'number', body: 'Hi, This is a reminder to text @reminder.contact regarding @reminder.occasion.'
+  	message = client.messages.create from: '8326482121', to: 'number', body: 'Hi, This is a reminder to text reminder.contact regarding reminder.occasion.'
   	
     ##Do something later
   end

@@ -34,8 +34,10 @@ class RemindersController < ApplicationController
     @reminder = @contact.reminders.create(reminder_params)
 
    # @reminder = @contact.reminders.create(reminder_params)
-    diff = (@reminder.date - DateTime.current).abs #when you subtract two date times, you get the diff in days.
-    RemindersWorker.perform_in(diff.days, current_user.number)
+    @diff = (@reminder.date - DateTime.current).abs.to_i #when you subtract two date times, you get the diff in days.
+    debugger
+    raise  @diff.inspect
+    RemindersWorker.perform_in(diff.days, @reminder.id, current_user.number)
     respond_to do |format|
       if @reminder.save
         format.html { redirect_to @contact, notice: 'Reminder was successfully created.' }
