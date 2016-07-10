@@ -1,7 +1,8 @@
 class RemindersController < ApplicationController
   before_action :set_contact
   before_action :set_reminder, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
+  #ADD AUTHENTICATE BACK WHEN DONE TESTING
 
 
 
@@ -34,10 +35,9 @@ class RemindersController < ApplicationController
     @reminder = @contact.reminders.create(reminder_params)
 
    # @reminder = @contact.reminders.create(reminder_params)
-    @diff = (@reminder.date - DateTime.current).abs.to_i #when you subtract two date times, you get the diff in days.
-    debugger
-    raise  @diff.inspect
-    RemindersWorker.perform_in(diff.days, @reminder.id, current_user.number)
+    @diff = (@reminder.date - Date.current).abs.to_i #when you subtract two date times, you get the diff in days.
+    #RemindersWorker.perform_in(@diff, @reminder.id, current_user.number)
+    RemindersWorker.perform_in(@diff.days, @reminder.id, 8324445337)
     respond_to do |format|
       if @reminder.save
         format.html { redirect_to @contact, notice: 'Reminder was successfully created.' }
