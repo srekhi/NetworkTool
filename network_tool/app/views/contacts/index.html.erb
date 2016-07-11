@@ -1,13 +1,17 @@
-<p id="notice"><%= notice %></p>
-
+<!-- <p id="notice"><%= notice %></p> -->
 <% if user_signed_in? %>
 
-  <h1>Listing Contacts</h1>
+  <h2> Contact List: </h2>
     <% @contacts = current_user.contacts %>
       <% @contacts.each do |contact| %>
         <div class="link row clearfix">
           <h2>
-            <%= link_to contact.name, contact_path(contact.id) %> 
+            <%= link_to contact.name, contact_path(contact.id) %>  <br>
+            <%= link_to "Delete", contact_path(contact.id), :method => :delete, :class => "btn"%> 
+            <br>
+            <%= link_to 'Edit', edit_contact_path(contact.id), :class => "btn" %> 
+
+
            <!-- <small class="author">Submitted <%= time_ago_in_words(contact.created_at) %></small> -->
           </h2>
         </div>
@@ -18,10 +22,14 @@
 
       <% end %>
     <% end %>
-    <%= link_to "New Contact", new_contact_path %>
+    <br>
+    <button class= 'btn'> <%= link_to "New Contact", new_contact_path %> </button>
 
 <% else %>
-  <h5> Welcome to NetworkTool. Make an account or sign in above! </h5>
+  <h1 class = text-center> Welcome to NetworkTool! </h1> 
+  <h2 class = text-center> This is a service that helps you keep in touch with friends, family, and coworkers. </h2>
+  <h5 class = text-center> Please sign up (or sign in) above! </h5>
+
 <% end %>
 
 
