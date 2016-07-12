@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :controllers
   devise_for :users 
 
   resources :contacts do
