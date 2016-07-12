@@ -1,4 +1,5 @@
 class RemindersController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_contact
   before_action :set_reminder, only: [:show, :edit, :update, :destroy]
   #before_filter :authenticate_user!
@@ -23,7 +24,11 @@ class RemindersController < ApplicationController
   def new
     @contact = Contact.find(params[:contact_id])
     @reminder = @contact.reminders.build
+    if @reminder.user_id == current_user.id
+      @reminder.user = current_user
+    end
   end
+
 
   # GET /reminders/1/edit
   def edit
@@ -33,11 +38,12 @@ class RemindersController < ApplicationController
   # POST /reminders.json
   def create
     @reminder = @contact.reminders.create(reminder_params)
+    @reminder.user = current_user
 
    # @reminder = @contact.reminders.create(reminder_params)
     @diff = (@reminder.date - Date.current).abs.to_i #when you subtract two date times, you get the diff in days.
     #RemindersWorker.perform_in(@diff, @reminder.id, current_user.number)
-    RemindersWorker.perform_in(@diff.days, @reminder.id, 8324445337)
+    RemindersWorker.perform_in(@diff.days, @reminder.id, @reminder.user.number)
     respond_to do |format|
       if @reminder.save
         format.html { redirect_to @contact, notice: 'Reminder was successfully created.' }
@@ -76,6 +82,8 @@ class RemindersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    
+
     def set_contact #to do list
       @contact = Contact.find(params[:contact_id])
     end
@@ -85,6 +93,6 @@ class RemindersController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def reminder_params
-       params.require(:reminder).permit(:title, :time_from_now, :send_to, :occasion, :contact_id, :date)
+       params.require(:reminder).permit(:title, :time_from_now, :send_to, :occasion, :contact_id, :date, :user_id)
     end
 end
