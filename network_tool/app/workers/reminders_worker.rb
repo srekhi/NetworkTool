@@ -11,7 +11,7 @@ class RemindersWorker
 	 		end
 	 	end
 	  	client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
-	  	message = client.messages.create from: '8326482121', to: "#{number}", body: "Hi, This is a reminder to text #{contact.name} regarding their #{reminder.occasion} today!"
+	  	message = client.messages.create from: '8326482121', to: number, body: "Hi, This is a reminder to text #{contact.name} regarding their #{reminder.occasion} today!"
   	end
    
 #THE BELOW IS HOW YOU CALL THIS METHOD
