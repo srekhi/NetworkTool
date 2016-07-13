@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160710155224) do
+ActiveRecord::Schema.define(version: 20160712170015) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160710155224) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.integer  "number"
+    t.string   "phone_number"
   end
 
 end
