@@ -3,10 +3,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-    <div class="form-group">
-      <%= f.label :name %> 
-      <%= f.text_field :name, class: "form-control", :autofocus => true %>
-    </div>
+   <!-- There used to be a category for name here, didnt think it was necessary-->
 
     <div class="form-group">
       <%= f.label :email %>
