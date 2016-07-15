@@ -91,6 +91,6 @@ class RemindersController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def reminder_params
-       params.require(:reminder).permit(:title, :time_from_now, :send_to, :occasion, :contact_id, :date)
+       params.require(:reminder).permit(:title, :time_from_now, :send_to, :occasion, :contact_id, :date, :recurring)
     end
 end
