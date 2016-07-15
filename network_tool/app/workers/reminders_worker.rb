@@ -20,16 +20,16 @@ class RemindersWorker
 	 		#recurrence do 
 	 			#going to run DateTime.current in order to tell 
 	 			#monthly(1).
-	 			
 	 		#end
 	 	else if recurring == '3 months'
 	 		recurrence {monthly(3)}
 	 	else if recurring == '6 months'
-	 		recurrence {monthly{6}}
-	 	else if recurrin == '1 year'
+	 		recurrence {monthly(6)}
+	 	else if recurring == '1 year'
 	 		recurrence {yearly}
 	 	end
-	 	
+
+
 	  	client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
 	  	message = client.messages.create from: '8326482121', to: number, body: "Hi, This is a reminder to text #{contact.name} regarding their #{reminder.occasion} today!"
   	end
