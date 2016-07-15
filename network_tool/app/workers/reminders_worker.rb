@@ -2,6 +2,7 @@ require 'sidekiq'
 
 class RemindersWorker
 	include Sidekiq::Worker
+	include Sidekiq::Worker
 
 	 def perform(reminder_id, number)
 	 	reminder = Reminder.find(reminder_id)

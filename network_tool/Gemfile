@@ -10,6 +10,7 @@ gem 'bootstrap-will_paginate'
 gem 'turbolinks',   '2.3.0'
 gem 'sidekiq'
 gem 'sidekiq_mailer'
+gem 'sidetiq'
 gem 'sinatra', require: false
 gem 'slim'
 gem 'resque'
