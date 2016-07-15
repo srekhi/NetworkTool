@@ -315,11 +315,13 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap-will_paginate
   byebug (= 3.4.0)
+  celluloid
   client_side_validations
   coffee-rails (= 4.1.0)
   devise
   envyable
   guard-minitest (= 2.3.1)
+  ice_cube
   jbuilder (= 2.2.3)
   jquery-rails (= 4.0.3)
   mini_backtrace (= 0.1.3)
