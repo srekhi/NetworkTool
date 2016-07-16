@@ -6,9 +6,6 @@ class RemindersWorker
 	include Sidekiq::Worker
   	include Sidetiq::Schedulable
 
-  	recurrence{monthly}
-
-
 	 def perform(reminder_id, number, recurring)
 	 	reminder = Reminder.find(reminder_id)
 	 	for c in Contact.all 

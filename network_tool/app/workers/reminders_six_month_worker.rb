@@ -5,8 +5,9 @@ require 'celluloid/current'
 class RemindersSixMonthWorker 
 	include Sidekiq::Worker
   	include Sidetiq::Schedulable
+  	d = DateTime.current
 
-  	recurrence{monthly(6)}
+  	recurrence{monthly(6).day_of_month(d.day)}
 
 
 	 def perform(reminder_id, number, recurring)
