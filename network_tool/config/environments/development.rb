@@ -7,7 +7,7 @@ Rails.application.configure do
   config.cache_classes = false
 
   # Do not eager load code on boot.
-  config.eager_load = false
+  config.eager_load = false #CHANGING THIS TO TRUE FOR SIDETIQ TESTING
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true

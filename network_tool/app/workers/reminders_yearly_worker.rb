@@ -6,7 +6,7 @@ class RemindersWorker
 	include Sidekiq::Worker
   	include Sidetiq::Schedulable
 
-  	recurrence{monthly}
+  	recurrence{monthly(12)}
 
 
 	 def perform(reminder_id, number, recurring)
