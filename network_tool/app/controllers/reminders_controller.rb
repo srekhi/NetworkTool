@@ -42,6 +42,7 @@ class RemindersController < ApplicationController
     @diff = (@reminder.date - Date.current).abs.to_i #when you subtract two date times, you get the diff in days.
     #RemindersWorker.perform_in(@diff, @reminder.id, current_user.number)
     #RemindersWorker.set_recurring(@reminder.recurring)
+    recurring = @reminder.recurring
 
 
       if recurring.start_with?('Not') #hardcoding this now will come back and improve.
@@ -59,7 +60,7 @@ class RemindersController < ApplicationController
       elsif recurring == '1 year'
         RemindersYearlyWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
       end
-      end
+      
 
     respond_to do |format|
       if @reminder.save

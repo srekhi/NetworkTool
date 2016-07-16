@@ -2,7 +2,7 @@ require 'sidekiq'
 require 'sidetiq'
 require 'celluloid/current'
 
-class RemindersWorker 
+class RemindersSixMonthWorker 
 	include Sidekiq::Worker
   	include Sidetiq::Schedulable
 
