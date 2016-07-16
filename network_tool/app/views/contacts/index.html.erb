@@ -8,7 +8,6 @@
           <h4>
             <%= link_to contact.name, contact_path(contact.id) %>  <br>
             <%= link_to "Delete", contact_path(contact.id), :method => :delete, :class => "btn"%> 
-            <br>
             <%= link_to 'Edit', edit_contact_path(contact.id), :class => "btn" %> 
 
 
