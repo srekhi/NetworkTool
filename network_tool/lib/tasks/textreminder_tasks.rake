@@ -1,5 +1,5 @@
 desc 'send reminder text' #this is description
-task send_reminder_text: :environment do 
+task send_reminder_text: :environment do  # I guess scanning local database right now... wont be hard to scan another db im guessing.
 
 	reminderList = Reminder.all
 	for r in reminderList
@@ -7,8 +7,7 @@ task send_reminder_text: :environment do
 			contact = findCorrespondingContact(r)
 			user = findCorrespodingUser(contact)
 			sendText(user, contact)
-			r.next_run = r.next_run + interval
-
+			r.next_run = r.next_run + interval 
 			
 		end
 	end
