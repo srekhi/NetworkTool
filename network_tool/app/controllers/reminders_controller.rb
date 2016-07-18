@@ -39,7 +39,7 @@ class RemindersController < ApplicationController
     @contact.user = current_user
 
    # @reminder = @contact.reminders.create(reminder_params)
-    @diff = (@reminder.date - Date.current).abs.to_i #when you subtract two date times, you get the diff in days.
+    #@diff = (@reminder.date - Date.current).abs.to_i #when you subtract two date times, you get the diff in days.
     #RemindersWorker.perform_in(@diff, @reminder.id, current_user.number)
     #RemindersWorker.set_recurring(@reminder.recurring)
     recurring = @reminder.recurring
