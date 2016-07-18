@@ -19,6 +19,12 @@
     <%= f.label :when_do_you_want_to_be_reminded? %> <br>
     <%= f.date_select(:date, :order => [:month, :day, :year]) %><!-- one field to enter a number, another dropdown menu to pick weeks/months/year-->
   </div>
+  <div class="field">
+    <%= f.label :recurring? %> <br><!--dropdown menu to select birthday, job anniversary, holiday, just reaching out, wedding anniversary, etc. -->
+    <%= f.select(:recurring, options_for_select([['Not recurring', 'Not recurring'],['1 month', '1 month'], ['3 months', '3 months'], ['6 months', '6 months'], ['1 year', '1 year']])) %>
+  </div>
+
+
   <!--there used to be comment here showing how to do a drop down menu with text or email preference selection -->
   <div class="actions">
     <%= f.submit %>

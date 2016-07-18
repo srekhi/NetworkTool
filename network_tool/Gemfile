@@ -10,6 +10,8 @@ gem 'bootstrap-will_paginate'
 gem 'turbolinks',   '2.3.0'
 gem 'sidekiq'
 gem 'sidekiq_mailer'
+gem 'sidetiq'
+gem 'celluloid'
 gem 'sinatra', require: false
 gem 'slim'
 gem 'resque'
@@ -19,6 +21,7 @@ gem 'devise'
 gem 'client_side_validations'
 gem 'jbuilder',     '2.2.3'
 gem 'redis-rack-cache'
+gem 'ice_cube'
 gem 'envyable'
 gem 'sdoc',         '0.4.0', group: :doc
 

@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   resources :contacts do
     resources :reminders
   end
+
   require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => '/sidekiq'
+  require 'sidetiq/web'
+
 
 
 

@@ -41,7 +41,27 @@ class RemindersController < ApplicationController
    # @reminder = @contact.reminders.create(reminder_params)
     @diff = (@reminder.date - Date.current).abs.to_i #when you subtract two date times, you get the diff in days.
     #RemindersWorker.perform_in(@diff, @reminder.id, current_user.number)
-    RemindersWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number)
+    #RemindersWorker.set_recurring(@reminder.recurring)
+    recurring = @reminder.recurring
+
+
+      if recurring.start_with?('Not') #hardcoding this now will come back and improve.
+        RemindersWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
+      elsif recurring == '1 month'
+        RemindersMonthlyWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
+        #recurrence do 
+          #going to run DateTime.current in order to tell 
+          #monthly(1).
+        #end
+      elsif recurring == '3 months'
+        RemindersThreeMonthWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
+      elsif recurring == '6 months'
+        RemindersSixMonthWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
+      elsif recurring == '1 year'
+        RemindersYearlyWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
+      end
+      
+
     respond_to do |format|
       if @reminder.save
         format.html { redirect_to @contact, notice: 'Reminder was successfully created.' }
@@ -91,6 +111,23 @@ class RemindersController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def reminder_params
-       params.require(:reminder).permit(:title, :time_from_now, :send_to, :occasion, :contact_id, :date)
+       params.require(:reminder).permit(:title, :time_from_now, :send_to, :occasion, :contact_id, :date, :recurring)
     end
+
+    def set_recurrence(recurring)
+      if recurring.start_with?('Not') #hardcoding this now will come back and improve.
+      elsif recurring == '1 month'
+        recurrence {monthly}
+        #recurrence do 
+          #going to run DateTime.current in order to tell 
+          #monthly(1).
+        #end
+      elsif recurring == '3 months'
+        recurrence {monthly(3)}
+      elsif recurring == '6 months'
+        recurrence {monthly(6)}
+      elsif recurring == '1 year'
+        recurrence {monthly(12)}
+      end
+      end
 end
