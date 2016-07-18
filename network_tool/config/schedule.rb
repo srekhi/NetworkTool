@@ -20,8 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 
 every 1.day do
-	reminderList = Reminder.all
-
-
+	rake "reminders_notifications:send_reminder_text"
 end
 

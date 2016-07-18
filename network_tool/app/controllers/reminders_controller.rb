@@ -43,22 +43,27 @@ class RemindersController < ApplicationController
     #RemindersWorker.perform_in(@diff, @reminder.id, current_user.number)
     #RemindersWorker.set_recurring(@reminder.recurring)
     recurring = @reminder.recurring
+    next_run = @reminder.next_run #THE DATE TO BE REMINDED!
 
 
       if recurring.start_with?('Not') #hardcoding this now will come back and improve.
+        @reminder.interval = '0'
         RemindersWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
       elsif recurring == '1 month'
-        RemindersMonthlyWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
-        #recurrence do 
-          #going to run DateTime.current in order to tell 
-          #monthly(1).
-        #end
+        #RemindersMonthlyWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
+        @reminder.interval = recurring.first
+    
       elsif recurring == '3 months'
-        RemindersThreeMonthWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
+        @reminder.interval = recurring.first
+        #RemindersThreeMonthWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
       elsif recurring == '6 months'
-        RemindersSixMonthWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
+        @reminder.interval = recurring.first
+
+        #RemindersSixMonthWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
       elsif recurring == '1 year'
-        RemindersYearlyWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
+        recurring = '12 months'
+        @reminder.interval = recurring.first
+        #RemindersYearlyWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
       end
       
 
@@ -111,7 +116,7 @@ class RemindersController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def reminder_params
-       params.require(:reminder).permit(:title, :time_from_now, :send_to, :occasion, :contact_id, :date, :recurring)
+       params.require(:reminder).permit(:title, :time_from_now, :send_to, :occasion, :contact_id, :date, :recurring, :interval, :next_run )
     end
 
     def set_recurrence(recurring)

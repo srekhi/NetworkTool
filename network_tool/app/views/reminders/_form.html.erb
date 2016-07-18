@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :when_do_you_want_to_be_reminded? %> <br>
-    <%= f.date_select(:date, :order => [:month, :day, :year]) %><!-- one field to enter a number, another dropdown menu to pick weeks/months/year-->
+    <%= f.date_select(:next_run, :order => [:month, :day, :year]) %><!-- one field to enter a number, another dropdown menu to pick weeks/months/year-->
   </div>
   <div class="field">
     <%= f.label :recurring? %> <br><!--dropdown menu to select birthday, job anniversary, holiday, just reaching out, wedding anniversary, etc. -->
