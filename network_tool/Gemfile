@@ -16,6 +16,8 @@ gem 'sinatra', require: false
 gem 'slim'
 gem 'resque'
 gem 'redis-rails'
+gem 'sidekiq-scheduler', '~> 2.0'
+gem 'whenever', :require => false
 gem 'twilio-ruby', '~> 3.12'
 gem 'devise'
 gem 'client_side_validations'

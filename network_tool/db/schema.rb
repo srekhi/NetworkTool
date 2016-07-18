@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715124917) do
+ActiveRecord::Schema.define(version: 20160717215214) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20160715124917) do
     t.date     "date"
     t.integer  "contact_id"
     t.string   "recurring"
+    t.date     "next_run"
+    t.string   "interval"
   end
 
   add_index "reminders", ["contact_id"], name: "index_reminders_on_contact_id"

@@ -8,7 +8,7 @@ class RemindersWorker
 
 	 def perform(reminder_id, number, recurring)
 	 	reminder = Reminder.find(reminder_id)
-	 	for c in Contact.all 
+	 	for c in Contact.all  #this is how you find the corresponding contact for the reminder.
 	 		if reminder.contact_id == c.id 
 	 		  contact = c
 	 		end

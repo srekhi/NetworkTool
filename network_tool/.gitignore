@@ -17,4 +17,9 @@
 /tmp
 config/env.yml
 dump.rdb
+<<<<<<< HEAD
 .DS_Store
+=======
+.DS_Store
+
+>>>>>>> text_cron_integration
