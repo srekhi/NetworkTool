@@ -1,7 +1,7 @@
 class ChangeRecurringFormatInReminder < ActiveRecord::Migration
   def up
     #change_column :reminders, :recurring, :integer
-    execute 'ALTER TABLE reminders ALTER COLUMN recurring TYPE boolean USING (recurring::integer)'
+    execute 'ALTER TABLE reminders ALTER COLUMN recurring TYPE integer USING (recurring::integer)'
 
   end
 

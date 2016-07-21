@@ -48,7 +48,7 @@ class RemindersController < ApplicationController
 
       if recurring.start_with?('Not') #hardcoding this now will come back and improve.
         @reminder.interval = '0'
-        RemindersWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
+        #RemindersWorker.perform_in(@reminder.id, @contact.user.phone_number, @reminder.recurring)
       elsif recurring == '1 month'
         #RemindersMonthlyWorker.perform_in(@diff.days, @reminder.id, @contact.user.phone_number, @reminder.recurring)
         @reminder.interval = recurring.first
