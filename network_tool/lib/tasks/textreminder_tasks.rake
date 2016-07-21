@@ -5,11 +5,11 @@ namespace :reminders_notifications do
 
 		reminderList = Reminder.all
 		for r in reminderList
-			if r.next_run == DateTime.now.day
+			if r.next_run == Date.today
 				contact = findCorrespondingContact(r)
 				user = findCorrespodingUser(contact)
 				sendText(user, contact)
-				r.next_run = r.next_run + r.interval 
+				r.next_run = r.next_run + "#{r.interval}.month"
 				
 			end
 		end
