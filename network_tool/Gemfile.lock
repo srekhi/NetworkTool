@@ -387,7 +387,7 @@ DEPENDENCIES
   redis-rack-cache
   redis-rails
   resque
-  rspec-rails
+  rspec-rails (~> 3.5)
   sass-rails (= 5.0.2)
   sdoc (= 0.4.0)
   sidekiq
