@@ -16,6 +16,7 @@ RSpec.describe "user registration", type: :feature do
 	  it "added a record in the rails database" do
 		  #user_compare = User.find(@user.id) #searches for database's user and compares against the inputted user details
 		 # expect(user_compare).to eq(@user) #if this is true, all user details saved properly
+		 #GO BACK TO THE ABOVE AT SOME POINT
 		  expect(User.count).not_to eq(@before_count)
 	  end
 	  it "shows flash notice upon successful sign up" do #this is one example
