@@ -43,6 +43,8 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara' #tests webapps by simulating how a real user would interact with app
   gem 'guard-rspec'
+  gem 'database_cleaner'
+
 end
 
 group :production do

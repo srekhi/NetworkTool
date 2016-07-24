@@ -94,6 +94,7 @@ GEM
     columnize (0.9.0)
     concurrent-ruby (1.0.2)
     connection_pool (2.2.0)
+    database_cleaner (1.5.3)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     devise (4.1.1)
@@ -371,6 +372,7 @@ DEPENDENCIES
   celluloid
   client_side_validations
   coffee-rails (= 4.1.0)
+  database_cleaner
   devise
   envyable
   factory_girl_rails

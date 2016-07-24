@@ -5,22 +5,22 @@
 
    <!-- There used to be a category for name here, didnt think it was necessary-->
 
-    <div class="form-group">
+    <div class="form-group" id="email"'>
       <%= f.label :email %>
       <%= f.email_field :email, autofocus: true, class: "form-control", required: true %>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" id="phone-number">
       <%= f.label :phone_number %> (In the form: 123456789)
       <%= f.text_field :phone_number, autofocus: true, class: "form-control", required: true %> <!-- might be able to do validations here -->
     </div>
 
-    <div class="form-group">
+    <div class="form-group" id="password">
       <%= f.label :password %>
       <%= f.password_field :password, class: "form-control", required: true %>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" id="password-confirmation">
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, class: "form-control", required: true %>
     </div>
