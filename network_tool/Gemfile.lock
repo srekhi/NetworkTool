@@ -98,6 +98,8 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.10)
+    font-awesome-sass (4.6.2)
+      sass (>= 3.2)
     formatador (0.2.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -330,6 +332,7 @@ DEPENDENCIES
   coffee-rails (= 4.1.0)
   devise
   envyable
+  font-awesome-sass
   guard-minitest (= 2.3.1)
   ice_cube
   jbuilder (= 2.2.3)
