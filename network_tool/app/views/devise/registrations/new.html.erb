@@ -5,6 +5,45 @@
 
    <!-- There used to be a category for name here, didnt think it was necessary-->
 
+
+   <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">Sign up form
+                    </h2>
+                    <hr>
+                    <p></p>
+                    <form role="form">
+                        <div class="row">
+                            <div class="form-group col-lg-3">
+                                <%= f.label :email %>
+                                <%= f.email_field :email, autofocus: true, class: "form-control", required: true %>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <%= f.label :phone_number %> (In the form: 123456789)
+                                <%= f.text_field :phone_number, autofocus: true, class: "form-control", required: true %>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <%= f.label :password %>
+                                <%= f.password_field :password, class: "form-control", required: true %>
+                            </div>
+                            <!-- <div class="clearfix"></div> -->
+                            <div class="form-group col-lg-3">
+                                <%= f.label :password_confirmation %>
+                                <%= f.password_field :password_confirmation, class: "form-control", required: true %>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <%= f.submit "Sign up", class: "btn btn-default" %>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    <!--
     <div class="form-group">
       <%= f.label :email %>
       <%= f.email_field :email, autofocus: true, class: "form-control", required: true %>
@@ -12,7 +51,7 @@
 
     <div class="form-group">
       <%= f.label :phone_number %> (In the form: 123456789)
-      <%= f.text_field :phone_number, autofocus: true, class: "form-control", required: true %> <!-- might be able to do validations here -->
+      <%= f.text_field :phone_number, autofocus: true, class: "form-control", required: true %>  
     </div>
 
     <div class="form-group">
@@ -28,6 +67,7 @@
     <div class="form-group">
       <%= f.submit "Sign up", class: "btn btn-lg btn-primary" %>
     </div>
+-->
 <% end %>
 
-<%= render "devise/shared/links" %>
+<!-- <%= render "devise/shared/links" %>  -->
