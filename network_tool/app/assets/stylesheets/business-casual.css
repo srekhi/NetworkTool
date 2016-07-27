@@ -84,6 +84,35 @@ hr {
     background: rgba(255,255,255,0.9);
 }
 
+#boxRegistration {
+    margin-bottom: 20px;
+    margin-left: 250px;
+    width:600px;
+    height: 500px;
+    padding: 30px 15px;
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+}
+
+#boxLogin {
+    margin-bottom: 20px;
+    margin-left: 250px;
+    width:600px;
+    height: 400px;
+    padding: 30px 15px;
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+}
+
+#boxDisplayContacts {
+    margin-bottom: 20px;
+    margin-left: 250px;
+    width:700px;
+    padding: 30px 15px;
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+}
+
 .intro-text {
     text-transform: uppercase;
     font-size: 1.25em;
