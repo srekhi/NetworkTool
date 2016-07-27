@@ -1,9 +1,5 @@
-<h2>Sign up</h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-   <!-- There used to be a category for name here, didnt think it was necessary-->
+  <!-- <%= devise_error_messages! %> -->
    <div class="row">
             <div class="box">
                 <div class="col-lg-12">
@@ -15,15 +11,17 @@
                                 <%= f.label :email %>
                                 <%= f.email_field :email, autofocus: true, class: "form-control", required: true %>
                             </div>
+                            <div class="clearfix"></div>                             
                             <div class="form-group col-lg-3">
                                 <%= f.label :phone_number %> (In the form: 123456789)
                                 <%= f.text_field :phone_number, autofocus: true, class: "form-control", required: true %>
                             </div>
+                            <div class="clearfix"></div>                                                         
                             <div class="form-group col-lg-3">
                                 <%= f.label :password %>
                                 <%= f.password_field :password, class: "form-control", required: true %>
                             </div>
-                            <!-- <div class="clearfix"></div> -->
+                            <div class="clearfix"></div> 
                             <div class="form-group col-lg-3">
                                 <%= f.label :password_confirmation %>
                                 <%= f.password_field :password_confirmation, class: "form-control", required: true %>
@@ -34,6 +32,5 @@
                         </div>
                     </div>
               </div>
-      </div>
+    </div>
 <% end %>
-<%= render "devise/shared/links" %> 

@@ -51,39 +51,38 @@
           </div>
           <!-- /.container -->
     </nav>
-  </body>
-</html>  
+ 
   <!-- 
     <header class="navbar navbar-default" role="navigation">
     <div class="navbar-inner">
       <div class="container">
         <div id="logo" class="navbar-brand"><%= link_to "Network", root_path %></div>
         <nav class="collapse navbar-collapse navbar-ex1-collapse">
-          <% if user_signed_in? -%>
+          <%# if user_signed_in? -%>
             <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to 'Add Contact', new_contact_path %></li>
-              <li><%= link_to 'Account', edit_user_registration_path %></li>
-              <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+              <li><%#= link_to 'Add Contact', new_contact_path %></li>
+              <li><%#= link_to 'Account', edit_user_registration_path %></li>
+              <li><%#= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
             </ul>
-          <% else -%>
+          <%# else -%>
             <ul class="nav navbar-nav pull-right">
-              <li><%= link_to 'Sign up', new_user_registration_path %></li>
-              <li><%= link_to 'Sign in', new_user_session_path %></li>
+              <li><%#= link_to 'Sign up', new_user_registration_path %></li>
+              <li><%#= link_to 'Sign in', new_user_session_path %></li>
             </ul>
-          <% end -%>
+          <%# end -%>
         </nav>
       </div>
     </div>
-  </header>
+  </header> -->
     <div id="main_content" class="container">
     <% flash.each do |name, msg| %>
       <%= content_tag(:div, msg, class: "alert alert-info") %>
     <% end %>
 
-      <div id="content" class="col-md-9 center-block">
+      <div id="content" class="col-md-9 center-block">  
         <%= yield %>
       </div>
-    </div>
-  </div>
+    </div> 
+  <!--</div> -->
   </body>
-</html>  -->
+</html>  
