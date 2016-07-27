@@ -6,23 +6,23 @@
                     <hr>
                     <h2 class="intro-text text-center">Sign up form</h2>
                     <hr>
-                        <div class="row">
-                            <div class="form-group col-lg-3">
+                        <div class="col">
+                            <div class="form-group row-lg-3">
                                 <%= f.label :email %>
                                 <%= f.email_field :email, autofocus: true, class: "form-control", required: true %>
                             </div>
                             <div class="clearfix"></div>                             
-                            <div class="form-group col-lg-3">
+                            <div class="form-group row-lg-3">
                                 <%= f.label :phone_number %> (In the form: 123456789)
                                 <%= f.text_field :phone_number, autofocus: true, class: "form-control", required: true %>
                             </div>
                             <div class="clearfix"></div>                                                         
-                            <div class="form-group col-lg-3">
+                            <div class="form-group row-lg-3">
                                 <%= f.label :password %>
                                 <%= f.password_field :password, class: "form-control", required: true %>
                             </div>
                             <div class="clearfix"></div> 
-                            <div class="form-group col-lg-3">
+                            <div class="form-group row-lg-3">
                                 <%= f.label :password_confirmation %>
                                 <%= f.password_field :password_confirmation, class: "form-control", required: true %>
                             </div>
