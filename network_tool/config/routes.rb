@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+
   devise_for :users 
 
   resources :contacts do
     resources :reminders
   end
 
+
   require 'sidekiq/web'
     mount Sidekiq::Web => '/sidekiq'
   require 'sidetiq/web'
-
 
 
 
@@ -17,9 +19,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'contacts#index'
+  root 'welcome#index'
   post 'twilio/voice' => 'twilio#voice'
   post 'notifications/notify' => 'notifications#notify' 
+  get 'welcome/displayhome' => 'welcome#displayhome'
     
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
