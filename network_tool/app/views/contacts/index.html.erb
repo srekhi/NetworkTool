@@ -35,7 +35,7 @@
 <% if user_signed_in? %>
 
 <div id="boxDisplayContacts">
-  <h2> Contact List: </h2> 
+  <p style="font-size:30px"> Contact List: <p> 
     <% @contacts = current_user.contacts %>
       <% @contacts.each do |contact| %>
         <div class="link row clearfix">
