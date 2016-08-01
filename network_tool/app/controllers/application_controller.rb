@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   #current_user should be made available by devise to ApplicationController. Anything that inherits from it should also have current_user.
-  
 
 
   protected
@@ -28,5 +27,7 @@ class ApplicationController < ActionController::Base
 
   def welcome
   end
-  
+
+
+
 end

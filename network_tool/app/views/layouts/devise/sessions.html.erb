@@ -13,7 +13,7 @@
   </head>
   
   <body>
-   <nav class="navbar navbar-default" role="navigation"> <!--navbar default sets bg and border color; 
+   <nav class="navbar navbar-default" role="navigation">
           <div class="container">
               <!-- Brand and toggle get grouped for better mobile display -->
               <div class="navbar-header">
@@ -32,9 +32,9 @@
                       <li> <%= link_to 'Home', welcome_displayhome_path %> </li>
                       <% if user_signed_in? -%>
                       <!--  <li><%#= link_to 'Add Contact', new_contact_path %></li> -->
-                        <li class><%= link_to 'Account', edit_user_registration_path %></li>
+                        <li class = "col-md-3 col-sm-3"><%= link_to 'Account', edit_user_registration_path %></li>
                         <li> <%= link_to 'Contact List', contacts_path %></li>
-                        <li overflow="hidden"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+                        <li class = "col-md-4 col-sm-3"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
                       <% else -%>
                         <li><%= link_to 'Sign up', new_user_registration_path %></li>
                         <li><%= link_to 'Sign in', new_user_session_path %></li>

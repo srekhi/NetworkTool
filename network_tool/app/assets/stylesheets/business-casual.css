@@ -92,7 +92,7 @@ hr {
 
 #boxRegistration {
     margin-bottom: 20px;
-    margin-left: 250px;
+    margin-left: auto;
     width:600px;
     height: 500px;
     padding: 30px 15px;
@@ -101,9 +101,8 @@ hr {
 }
 
 #boxLogin {
-    margin-bottom: 20px;
-    margin-left: 250px;
-    width:600px;
+    margin-bottom: 10%;
+    width: 70%;
     height: 400px;
     padding: 30px 15px;
     background: #fff;
@@ -111,9 +110,9 @@ hr {
 }
 
 #boxDisplayContacts {
-    margin-bottom: 20px;
-    margin-left: 250px;
-    width:700px;
+    margin-bottom: 10%;
+    margin-left: 30%;
+    width:70%;
     padding: 30px 15px;
     background: #fff;
     background: rgba(255,255,255,0.9);
@@ -149,12 +148,13 @@ footer p {
 
 @media screen and (min-width:768px) {
     .brand {
-        display: inherit;
-        margin-left: 200px;
-        width: 800px;
+       /* display: inherit;  NOTE I TOOK THIS OUT BC WAS ANNOYED W STYLING AND DOENST LOOK BAD WITHOUT. MAY ADD BACK IN LATER */
+        text-align: center; 
+       /* margin-left: 25%;*/ 
+       /* margin-right:45%;*/
+        width: 100%;
         /*margin: 0;*/
         padding: 30px 0 10px;
-        text-align: center; 
         text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
         font-size: 5em;
